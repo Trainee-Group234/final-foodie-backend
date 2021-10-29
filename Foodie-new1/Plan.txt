@@ -1,0 +1,15 @@
+Login -> Registration -> Dishes
+Dishes-> categories -> Breakfast, Lunch, Dinner
+Checkout-> cart Listing
+Billing 
+
+
+Dishes-> 
+
+Login and  Signup module:- Sunday17 oct
+Dishes:- Monday 18 Oct
+Cart :- Tuesday 19 Oct
+Billing :- Wednesday 20 Oct
+
+Morning Standup call :- 9AM
+Evening :- 6:30 PM
