@@ -22,6 +22,6 @@ public class Counter {
 	private int qty;
 	private double cost;
 	private String title;
-	@ManyToOne
-	private Bill bill;
+//	@ManyToOne
+//	private Bill bill;
 }

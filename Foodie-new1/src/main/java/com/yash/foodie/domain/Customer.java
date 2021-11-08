@@ -90,7 +90,7 @@ public class Customer implements UserDetails {
 	@OneToOne
 	@JoinColumn(name = "ano")
 	@Cascade(CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	private Address address;
 	
 	

@@ -84,7 +84,7 @@ public class CustomerController {
 		if(c!=null) {
 			c.setStatus(1);
 			customerRepository.save(c);
-			return new ResponseEntity<>("Your Account verified \n Login link:- http://localhost:3000/login",HttpStatus.OK);
+			return new ResponseEntity<>("Your Account has been verified !",HttpStatus.OK);
 		}
 		
 		return new ResponseEntity<>("Bad Request!", HttpStatus.BAD_REQUEST);

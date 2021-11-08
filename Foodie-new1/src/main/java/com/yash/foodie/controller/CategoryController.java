@@ -27,17 +27,20 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 	
+	//Mapping to  fetch the category by name
 	@GetMapping("/{category}")
 	public ResponseEntity<?>  getByCategory(@PathVariable("category") String category){
 		categoryService.getCategoryItemList(category);
 		return new ResponseEntity<>(categoryService.getCategoryItemList(category),HttpStatus.OK);
 	}
 	
+	//Mapping to fetch all categories
 	@GetMapping("/all")
 	public ResponseEntity<?>  getCategory(){
 		return new ResponseEntity<>(categoryService.getAllCategory(),HttpStatus.OK);
 	}
 	
+	//Mapping to add category
 	@PostMapping("/add")
 	public ResponseEntity<?> addCategory(@Valid @RequestBody Category category){
 		return new ResponseEntity<>(categoryService.addCategory(category),HttpStatus.OK);

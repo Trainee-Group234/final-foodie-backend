@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,8 @@ public class Bill {
 	private double total;
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date billDate;
-	@OneToMany(mappedBy = "bill")
-	private List<Counter> items;
+	//@OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
+	@ElementCollection
+	private List<Item> items;
 	
 }

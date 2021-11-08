@@ -54,6 +54,8 @@ public class AdminController {
 		@Autowired
 		CustomerRepository customerRepository;
 		
+		
+		//mapping to block a customer
 		//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 		@GetMapping("block/{email}")
 		public ResponseEntity<?> blockCustomer(@PathVariable("email") String email){
@@ -61,6 +63,7 @@ public class AdminController {
 			return new ResponseEntity<>("Account Blocked!",HttpStatus.OK);
 		}
 		
+		//Mapping to unblock a customer
 		//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 		@GetMapping("unblock/{email}")
 		public ResponseEntity<?> unblockCustomer(@PathVariable("email") String email){
@@ -68,6 +71,7 @@ public class AdminController {
 			return new ResponseEntity<>("Account Un-Blocked!",HttpStatus.OK);
 		}
 		
+		//Admin authorization
 		@PostMapping("admin/login")
 		public ResponseEntity<?> verifyAdmin(@Valid @RequestBody LoginRequest login){
 			if(login.getUsername().equals("admin@foodie.com") && login.getPassword().equals("admin")) {
@@ -84,27 +88,35 @@ public class AdminController {
 			}
 		}
 		
+		
+		//Mapping to fetch all the items
 		@GetMapping("items/all")
 		public ResponseEntity<?> getItems(){
 			return new ResponseEntity<>(itemService.viewAllItems(),HttpStatus.OK);
 		}
 		
+		
+		//mapping to fetch all the category 
 		@GetMapping("category/all")
 		public ResponseEntity<?>  getCategory(){
 			return new ResponseEntity<>(categoryService.getAllCategory(),HttpStatus.OK);
 		}
 		
+		
+		//Mapping to delete an item
 		@DeleteMapping("delete/{name}")
 		public ResponseEntity<?> removeCategory(@PathVariable("name") String name){
 			categoryService.removeCategorybyName(name);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		
+		//Mapping to add Category
 		@PostMapping("category/add")
 		public ResponseEntity<?> addCategory( @Valid @RequestBody Category category){
 			return new ResponseEntity<>(categoryService.addCategory(category),HttpStatus.OK);
 		}
 		
+		//Mapping to add item
 		@PostMapping("item/add")
 		public ResponseEntity<?> addorUpdateItem(@Valid @RequestBody Item item){
 			Category category = categoryRepository.findByName(item.getCategoryName()).get();
@@ -112,6 +124,7 @@ public class AdminController {
 			return new ResponseEntity<Item>((Item)itemService.addItem(item), HttpStatus.OK);
 		}
 		
+		//Mapping to delete an item
 		@DeleteMapping("item/delete/{name}")
 		public ResponseEntity<?> removeByItemName(@PathVariable("name") String name){
 			itemRepository.removeByItemName(name);

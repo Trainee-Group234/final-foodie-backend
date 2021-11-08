@@ -22,11 +22,13 @@ public class BillController {
 	@Autowired
 	BillServieImpl billServieImpl;
 	
+	//Mapping to save the Bill
 	@PostMapping("/save")
 	public ResponseEntity<?> saveBill(@RequestBody Bill bill){
 		return new ResponseEntity<>(billServieImpl.saveBill(bill),HttpStatus.OK);
 	}
 	
+	//Mapping to fetch the bill by username
 	@GetMapping("/getbill/{username}")
 	public ResponseEntity<?> getBillByName(@PathVariable("username") String username){
 		return new ResponseEntity<>(billServieImpl.getBillByName(username),HttpStatus.OK);
